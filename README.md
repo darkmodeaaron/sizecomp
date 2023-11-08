@@ -68,3 +68,92 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+export const Main = () => {
+
+  const [fitState, setFitState] = useState("")
+
+  const [dropdownHeadState, setDropdownHeadState] = useState(false)
+  const [dropdownDropState, setDropdownDropState] = useState(false)
+  const [dropdownText, setDropdownText] = useState('Choose fit')
+
+
+
+  function changeDropdown() {
+    setDropdownDropState(!dropdownDropState)
+    setDropdownHeadState(!dropdownHeadState)
+  }
+
+  function changeStateSlim(message) {
+    setFitState(message)
+    setDropdownDropState(!dropdownDropState)
+    setDropdownHeadState(!dropdownHeadState)
+    setDropdownText('Slim Fit')
+    setImgSetState(slimImgs)
+  }
+
+  function changeStateStraight(message) {
+    setFitState(message)
+    setDropdownDropState(!dropdownDropState)
+    setDropdownHeadState(!dropdownHeadState)
+    setDropdownText('Straight Fit')
+    setImgSetState(slimImgs)
+  }
+
+
+  const [waistValue, setWaistValue] = useState('34')
+  const [legValue, setLegValue] = useState('34')
+
+  function changeWaist(newValue) {
+    setWaistValue(newValue)
+    setImgSizeState(waistValue + legValue)
+    console.log(imgsrc)
+  }
+
+  function changeLeg(newValue) {
+    setLegValue(newValue)
+    setImgSizeState(waistValue + legValue)
+  }
+
+
+
+  const [imgSetState, setImgSetState] = useState([])
+  const [imgSizeState, setImgSizeState] = useState(waistValue + legValue)
+
+
+  const [imgsrc, setImgsrcState] = useState('')
+
+
+  useEffect(() => {
+    // Use the useEffect to observe changes to imgSetState and update imgsrc
+    for (let img of imgSetState) {
+      if (img.size === imgSizeState) {
+        setImgsrcState(img.img);
+        break;
+      }
+    }
+  }, [imgSetState, imgSizeState]);
+
+
+  return (
+
+    <section className='outline'>
+
+      <header>
+        <Dropdown changeState={changeStateSlim} changeStateStraight={changeStateStraight} dropState={dropdownDropState} headState={dropdownHeadState} changeDropdownState={changeDropdown} dropText={dropdownText}/>
+        <Description data={fitState} />
+      </header>
+
+      <section>
+        <ImageSelector isrc={imgsrc}/>
+      </section>
+
+      <footer>
+        <SizeSelector wValue={waistValue} lValue={legValue} wfunction={changeWaist} lfunction={changeLeg}/>
+      </footer>
+
+    </section>
+
+  )
+}
