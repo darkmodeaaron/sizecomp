@@ -17,7 +17,7 @@ body {
     margin: 100px auto 0 auto;
     max-width: 1000px;
     height: 600px;
-    padding: 20px;
+    padding: 45px;
     position: relative;
     display: flex;
     align-items: center;
@@ -25,15 +25,16 @@ body {
 }
 
 .leftSide {
-    flex: 1;
+    flex: .5;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     height: 100%;
+    position: relative;
 }
 .rightSide {
-    flex: 1;
+    flex: 1.5;
 }
 
 header {
@@ -62,7 +63,7 @@ header {
     width: 175px;
 }
 .dropdownState.active {
-    border-bottom: 0;
+    border-bottom: 1px solid white;
     border-radius: 5px 5px 0 0;
 }
 
@@ -102,7 +103,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    height: 65px;
+    height: 92px;
     overflow: unset;
     border-right: 1px solid #EDEDED;
     border-bottom: 1px solid #EDEDED;
@@ -117,9 +118,12 @@ header {
 }
 
 .description-text {
+    position: relative;
+    top: 100px;
     font-size: 18px;
     font-weight: 400;
-    text-align: justify;
+    text-align: left;
+    line-height: 28px;
 }
 
 .footer {
@@ -181,20 +185,21 @@ header {
 }
 
 .image-selector-container {
-    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .mainimg-wrapper {
-    height: 300px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .mainimg {
+    position: relative;
+    left: 25px;
     height: 100%;
     opacity: 1;
     transition: opacity 350ms ease-in-out;
@@ -206,4 +211,118 @@ header {
 
 .size-number {
     cursor: pointer;
+}
+
+.sizeSelectors-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.selector-container {
+    border: 1px solid #EDEDED;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 5px;
+    width: 175px;
+}
+.selector-container.active {
+    border: 1px solid #EDEDED;
+    border-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 5px;
+    width: 175px;
+}
+
+.dropdownStateImg-wrapper2 {
+    transform: rotate(-90deg);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.dropdownStateImg-wrapper2 img {
+    width: 100%;
+}
+
+.selector-table {
+    display: none;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid #EDEDED;
+    border-right: 1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
+    border-radius: 0 5px 5px 0;
+    position: relative;
+    right: 25px;
+}
+.selector-table.active {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid #EDEDED;
+    border-right: 1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
+    border-radius: 0 5px 5px 0;
+    position: relative;
+    right: 25px;
+    z-index: 1;
+}
+.container {
+    display: flex;
+}
+
+.red {
+    position: absolute;
+    top: 185px;
+    left: 25px;
+    width: 12px;
+    transform: rotate(-90deg);
+}
+.red.active {
+    display: none;
+}
+
+.sizingCover {
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: white;
+    width: 300px;
+    height: 200px;
+    z-index: 2;
+}.sizingCover.active {
+    display: none;
+}
+
+.waistArrow {
+    display: none;
+    position: absolute;
+    bottom: 107px;
+    left: 25px;
+    width: 12px;
+    transform: rotate(-90deg);
+}
+.waistArrow.active {
+    display: block;
+}
+
+.legArrow {
+    display: none;
+    position: absolute;
+    bottom: 55px;
+    left: 25px;
+    width: 12px;
+    transform: rotate(-90deg);
+}
+.legArrow.active {
+    display: block;
 }
